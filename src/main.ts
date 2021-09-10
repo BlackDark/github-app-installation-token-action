@@ -1,5 +1,5 @@
 import {setFailed, setOutput, getInput} from '@actions/core'
-import {getToken} from 'github-app-installation-token'
+import {getToken} from '@blackdark/github-app-installation-token'
 
 export async function run(): Promise<void> {
   try {
