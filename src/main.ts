@@ -1,4 +1,4 @@
-import {setFailed, setOutput, getInput} from '@actions/core'
+import {setFailed, setOutput, getInput, info} from '@actions/core'
 import {getToken} from '@blackdark/github-app-installation-token'
 
 export async function run(): Promise<void> {
@@ -8,6 +8,8 @@ export async function run(): Promise<void> {
     const privateKey = getInput('privateKey')
     const baseUrl = getInput('baseUrl', {required: false})
 
+    const date = new Date()
+    info(`Machine timestamp: ${date.toISOString()} - ${date.toLocaleString()}`)
     const {token} = await getToken({appId, installationId, privateKey, baseUrl})
 
     setOutput('token', token)
